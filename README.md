@@ -7,8 +7,6 @@ This repository contains the source code for **ONE-PASS: Single Forward Pass Dec
  
 ---
 
-## Quick Start （Finally Step）
-To run the **ONE-PASS** model with different hyper-parameters, use run run_RPO.sh in python. run `bash run_RPO.sh`.
 ### Requirement:
 ```python
 transformers==4.50.0
