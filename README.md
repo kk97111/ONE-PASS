@@ -2,7 +2,9 @@
 ---
 This repository contains the source code for **ONE-PASS: Single Forward Pass Decoding for Listwise Reranking**, which is subbimted for peer review. The overall architecture is shown as follows:
 
-<img src="./intro.png" width="45%"/> <img src="./main.png" width="45%"/>
+<!-- <img src="./intro.png" width="45%"/> <img src="./main.png" width="45%"/> -->
+| ![intro](./intro.png) | ![main](./main.png) |
+|:--:|:--:|
 
  
 ---
