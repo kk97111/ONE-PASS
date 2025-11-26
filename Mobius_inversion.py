@@ -34,7 +34,7 @@ def parse_args():
                       default="/data/zoo/%(backbone)s",
                       help="Base model path")
     parser.add_argument("--dataset_path", type=str,
-                      default="/data/yingpeng/tree_inference/dataset/%(data_name)s/%(backbone)s/",
+                      default="./dataset/%(data_name)s/%(backbone)s/",
                       help="Path to preprocessed dataset")
     parser.add_argument("--learning_rate", type=float, default=1e-3,
                       help="Learning rate for optimizer")
