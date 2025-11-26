@@ -37,3 +37,31 @@ You can select dataset = ("rank_zephyr_IR_20" "quora_25" "ml-1m_25" "Games_25") 
 - --variant ''wo_Mobius-2' 
 - --variant ''ONE-PASS'
 ---
+## baseline methods.
+### Speculative methods:
+```python
+python baseline_Blockwise.py --data_name rank_zephyr_IR_20 --backbone Llama-3.2-3B-Instruct --n_step=2 # Blockwise
+python baseline_Mesuda.py --data_name rank_zephyr_IR_20 --backbone Llama-3.2-3B-Instruct --n_step=2 # Medusa
+python baseline_speculative_decoding.py --data_name rank_zephyr_IR_20 --backbone Llama-3.2-3B-Instruct --n_step=2 # SDM
+python baseline_Parallel_Decoding.py --data_name rank_zephyr_IR_20 --backbone Llama-3.2-3B-Instruct --n_step=2  # PDM
+```
+### SFT methods Rankzephyr and First 
+We implement the SFT methods Rankzephyr and First based on well-know tool torchtune
+Required
+```python
+torchtune # release/0.5.0 !!!
+```
+First, set output_dir based on your preference (First or Rankzephyr), then for training.
+#### Rankzephyr (training)
+```python
+ torchrun --nproc_per_node 4 full_finetune_distributed.py --config 3B_full.yaml # set  RankNet: False in 3B_full.yaml
+```
+#### First (training)
+```python
+ torchrun --nproc_per_node 4 full_finetune_distributed.py --config 3B_full.yaml # set  RankNet: True in 3B_full.yaml
+```
+#### Evaluation
+```python 
+ python evaluate_SFT model_path=./SFT_models/Llama-3.2-3B-Instruct/First
+ python evaluate_SFT model_path=./SFT_models/Llama-3.2-3B-Instruct/Rankzephyr
+```
