@@ -67,6 +67,6 @@ First, set output_dir based on your preference (FIRST or Rankzephyr), then for t
 The original RankZephyr is designed with an auto-regressive decoding strategy, which is misaligned with the fast decoding objective. In [24], a single-token decoding strategy is adopted for RankZephyr; that is, a candidate is assumed to agree with the ranking implied by its computed logit at the first (top-rank) token position. Following this setting, we adopt the same decoding strategy in our paper. The source code for this decoding process can be executed as follows:
 
 ```python 
- python evaluate_SFT --data_name quora_25  --backbone Llama-3.2-3B-Instruct --mode FIRST   model_path "./SFT_models/Llama-3.2-3B-Instruct/FIRST"
+ python evaluate_SFT --data_name quora_25  --backbone Llama-3.2-3B-Instruct --mode FIRST   model_path ./SFT_models/Llama-3.2-3B-Instruct/FIRST
  python evaluate_SFT --data_name quora_25  --backbone Llama-3.2-3B-Instruct --mode rankzephyr  model_path ./SFT_models/Llama-3.2-3B-Instruct/rankzephyr
 ```
