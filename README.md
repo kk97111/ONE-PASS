@@ -64,9 +64,9 @@ First, set output_dir based on your preference (FIRST or Rankzephyr), then for t
  torchrun --nproc_per_node 4 full_finetune_distributed.py --config 3B_full.yaml # set  RankNet: True in 3B_full.yaml
 ```
 ### Evaluation for Rankzephyr and FIRST
-The original Rankzephyr is designed with auto-regression decoding strategy, which misaligns with fast decoding target. [24] adopts a Single Token Decoding for Rankzephyr, i.e., a candidate agrees with the rank implied by its computed logit for the same candidate in the first (top-rank) token position. As a result, we adopt this decoding strategy in our paper. The source code of decoding can be run as follows with 
+The original RankZephyr is designed with an auto-regressive decoding strategy, which is misaligned with the fast decoding objective. In [24], a single-token decoding strategy is adopted for RankZephyr; that is, a candidate is assumed to agree with the ranking implied by its computed logit at the first (top-rank) token position. Following this setting, we adopt the same decoding strategy in our paper. The source code for this decoding process can be executed as follows:
 
 ```python 
- python evaluate_SFT --data_name="quora_25"  --backbone "Llama-3.2-3B-Instruct" --mode "FIRST"   model_path "./SFT_models/Llama-3.2-3B-Instruct/FIRST"
- python evaluate_SFT --data_name="quora_25"  --backbone "Llama-3.2-3B-Instruct" --mode "rankzephyr"  model_path ./SFT_models/Llama-3.2-3B-Instruct/rankzephyr
+ python evaluate_SFT --data_name quora_25  --backbone Llama-3.2-3B-Instruct --mode FIRST   model_path "./SFT_models/Llama-3.2-3B-Instruct/FIRST"
+ python evaluate_SFT --data_name quora_25  --backbone Llama-3.2-3B-Instruct --mode rankzephyr  model_path ./SFT_models/Llama-3.2-3B-Instruct/rankzephyr
 ```
