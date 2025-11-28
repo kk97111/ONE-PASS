@@ -39,6 +39,8 @@ You can select dataset = ("rank_zephyr_IR_20" "quora_25" "ml-1m_25" "Games_25") 
 ---
 ## baseline methods.
 ### Speculative methods:
+Speculative Decoding Method, Blockwise, Medusa, and Parallel Decoding Method. 
+For fair comparison, we directly rank the unaccepted items based on the logits of the last pass forward when SD-based methods reach a comparable latency to ours (usually 2-times pass forward of LLMs). The effectiveness and efficiency comparison as well as Accuracy–Latency Pareto Frontier analysis are shown in Figure 4
 ```python
 python baseline_Blockwise.py --data_name rank_zephyr_IR_20 --backbone Llama-3.2-3B-Instruct --n_step=2 # Blockwise
 python baseline_Mesuda.py --data_name rank_zephyr_IR_20 --backbone Llama-3.2-3B-Instruct --n_step=2 # Medusa
